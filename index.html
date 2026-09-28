@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 网页语言主要是英语，如果是中文‘zh-CN’ -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 可视区域适应手机，默认缩放比例为1 -->
+  <title>A Tiny World for You</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 把外部的 style.css 样式文件连接到这个HTML页面。 -->
+</head>
+
+<body>
+
+<div class="bg"></div>
+<!-- 背景层，可能用于设置背景图片或颜色。 -->
+<div class="app">
+<!-- 应用容器，包含所有页面内容 -->
+
+<section class="screen active" id="s1">
+  <!-- 第一个屏幕，初始状态为 active，显示在页面上 -->
+   <!-- 第一页背景装饰 -->
+  <div class="birthday-decor">
+    <span class="decor d1">🎂</span>
+    <span class="decor d2">🎁</span>
+    <span class="decor d3">🎈</span>
+    <span class="decor d4">🎉</span>
+    <span class="decor d5">🎀</span>
+    <span class="decor d6">✨</span>
+  </div>
+  <div class="panel sequence">
+    <!-- 面板容器，包含一系列的文本和按钮 -->
+    <h1>Happy Birthday! 🎂✨</h1>
+    <h2>Hey, birthday boy.</h2>
+    <p>I know I can't be there with you today,
+     <br>so I made a tiny world where I can.</p>
+    <p>There are a few things waiting for you inside.</p>
+    <p>Some memories.<br>Some stupid questions.<br>A few surprises.</p>
+    <p>And maybe someone who misses you a little too much.</p>
+    <p>Ready?</p>
+    <div class="spacer"></div>
+    <!-- spacer 用于在元素之间添加空白空间 -->
+    <button class="btn" onclick="go(2)">START</button>
+  </div>
+</section>
+
+
+
+<section class="screen" id="s2">
+
+  <!-- 安全验证锁插图 -->
+  <div class="security-icon">
+    🔒
+  </div>
+
+  <div class="panel">
+    <h2>Security check.</h2>
+    <p class="muted">Before you continue, I need to make sure this is really you. </p>
+    <p>What are you?</p>
+    <div class="choices">
+      <button class="choice" onclick="security('A', this)">
+        A. An artist
+      </button>
+      <button class="choice" onclick="security('B', this)">
+        B. A man
+      </button>
+      <button class="choice" onclick="security('C', this)">
+        C. Someone who's being missed
+      </button>
+      <button class="choice" onclick="security('D', this)">
+        D. Someone turning 29 today
+      </button>
+    </div>
+
+    <div class="feedback" id="secFeedback"></div>
+    <button
+      class="btn next hidden"
+      id="secNext"
+      onclick="go(3)">
+      CONTINUE
+    </button>
+  </div>
+
+</section>
+
+
+
+<section class="screen" id="s3">
+
+  <div class="panel">
+
+    <div class="relationship-icon">
+      <div class="circle left-circle"></div>
+      <div class="circle right-circle"></div>
+      <span class="question-mark">?</span>
+    </div>
+
+    <h2>Current relationship status:</h2>
+
+    <div class="choices">
+
+      <button class="choice" onclick="relationship('A', this)">
+        A. Friend
+      </button>
+
+      <button class="choice" onclick="relationship('B', this)">
+        B. Not just a friend
+      </button>
+
+      <button class="choice" onclick="relationship('C', this)">
+        C. Something that cannot be defined
+      </button>
+
+      <button class="choice" onclick="relationship('D', this)">
+        D. I don't know. Not sure.
+      </button>
+
+    </div>
+
+    <div class="feedback" id="relationshipFeedback"></div>
+
+    <button
+      class="btn next hidden"
+      id="relationshipNext"
+      onclick="go(4)">
+      NEXT
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<section class="screen" id="s4">
+
+  <div class="panel data-panel">
+
+    <p class="data-label">PERSONAL DATA REPORT</p>
+
+    <h2>I have collected some data about you.</h2>
+
+    <p class="muted">
+      Results so far:
+    </p>
+
+
+    <!-- BASIC DATA -->
+
+    <div class="data-section">
+
+      <p class="data-title">01 / BASIC DATA</p>
+      <div class="data-tags">
+
+        <span>Artist</span>
+        <span>Libra</span>
+        <span>Good with colours</span>
+        <span>Dark blue enthusiast</span>
+        <span>Good with languages</span>
+        <span>Beautiful handwriting</span>
+        <span>Good singing voice</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOD -->
+
+    <div class="data-section">
+
+      <p class="data-title">02 / SOME PRACTICAL DATA</p>
+
+      <p>
+        A surprisingly complicated collection of food preferences.
+        <br>
+        And restrictions.
+        <br>
+        And exceptions to those restrictions.
+      </p>
+
+      <p class="muted">
+        Still collecting data on this subject.
+      </p>
+
+    </div>
+
+
+    <!-- BEHAVIOUR -->
+
+    <div class="data-section">
+
+      <p class="data-title">03 / BEHAVIOURAL OBSERVATIONS</p>
+
+      <div class="data-tags">
+
+        <span>Thinks a lot</span>
+        <span>We discuss a lot</span>
+        <span>Has opinions of his own</span>
+        <span>Annoyingly, quite often right</span>
+        <span>Sometimes difficult</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- GOOD THINGS -->
+
+    <div class="data-section">
+
+      <p class="data-title">04 / THINGS I HAVE NOTICED</p>
+
+      <div class="data-tags">
+
+        <span>Kind</span>
+        <span>A very particular sense of beauty</span>
+        <span>Thoughtful</span>
+        <span>Has dreams</span>
+        <span>Brave</span>
+        <span>Disciplined</span>
+        <span>Has his own plans</span>
+        <span>Interesting</span>
+        <span>Listens</span>
+        <span>Knows how to give compliments</span>
+        <span>Knows how to stay</span>
+        <span>Emotionally intelligent</span>
+        <span>Good with people</span>
+        <span>Independent, but not isolated</span>
+        <span>Sentimental</span>
+        <span>Curious</span>
+        <span>Always willing to learn</span>
+        <span>Adaptable</span>
+        <span>And has a very nice smile</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- PERSONAL -->
+
+    <div class="data-section important-data">
+
+      <p class="data-title">05 / UNEXPECTED FINDINGS</p>
+
+      <p>
+        Difficult to define.
+      </p>
+
+      <p>
+        Level of importance:
+        <br>
+        <strong>higher than originally expected.</strong>
+      </p>
+
+    </div>
+
+
+    <!-- CONCLUSION -->
+
+    <div class="data-conclusion">
+
+      <p class="data-title">CONCLUSION</p>
+
+      <p>Current dataset appears insufficient.</p>
+
+      <p>
+        More data requires more observation.
+      </p>
+
+      <p class="muted">
+        Further observation required.
+      </p>
+
+    </div>
+
+
+    <button class="btn next" onclick="go(5)">
+      CONTINUE OBSERVATION
+    </button>
+
+  </div>
+
+</section>
+
+
+
+
+<section class="screen" id="s5">
+<div class="memory-bg">
+  <span>✉️</span>
+  <span>💬</span>
+  <span>✦</span>
+  <span>♡</span>
+</div>
+  <div class="panel">
+
+    <h2>
+      Things you gave me
+      <br>
+      without really meaning to.
+    </h2>
+
+    <p class="muted">
+      Tap to open.
+    </p>
+
+    <div class="gift-cards">
+      <button class="memory-card"
+        onclick="openMemory(this, 'Someone to talk to.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Someone to argue with.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Someone to tell stupid things to.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Someone who actually listens.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Someone who makes me think.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Unexpected compliments.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'Comfort.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'More reasons to check my phone.')">
+        ?
+      </button>
+      <button class="memory-card"
+        onclick="openMemory(this, 'A suspicious amount of attachment.')">
+        ?
+      </button>
+
+    </div>
+
+    <div
+      class="feedback"
+      id="memoryProgress">
+      0 / 9 discovered
+    </div>
+    <div
+      class="feedback hidden"
+      id="memoryConclusion">
+      <strong>
+        No return policy available.
+      </strong>
+    </div>
+
+    <button
+      class="btn next hidden"
+      id="memoryNext"
+      onclick="go(6)">
+      NEXT
+    </button>
+  </div>
+
+</section>
+
+
+
+
+<section class="screen" id="s6">
+<div class="system-bg">
+  <span class="sys s1">010101</span>
+  <span class="sys s2">%</span>
+  <span class="sys s3">+</span>
+  <span class="sys s4">?</span>
+
+  <span class="line line1"></span>
+  <span class="line line2"></span>
+  <span class="line line3"></span>
+</div>
+  <div class="panel attachment-panel">
+    <p class="data-label">
+      SYSTEM ANALYSIS
+    </p>
+    <h2>
+      Running a completely unnecessary calculation...
+    </h2>
+    <p class="muted" id="attachmentStatus">
+      Ready when you are.
+    </p>
+
+    <!-- 进度条 -->
+    <div class="progress-container">
+      <div
+        class="progress-bar"
+        id="attachmentBar">
+      </div>
+    </div>
+
+    <div
+      class="progress-number"
+      id="attachmentNumber">
+      0%
+    </div>
+
+    <!-- 开始按钮 -->
+    <button
+      class="btn"
+      id="calculateButton"
+      onclick="startAttachmentCalculation()">
+      START CALCULATION
+    </button>
+
+
+    <!-- 最后的计算结果 -->
+    <div
+      class="attachment-result hidden"
+      id="attachmentResult">
+      <p class="warning">
+        ⚠ Warning: expected range exceeded.
+      </p>
+
+      <p>
+        Conclusion:
+      </p>
+
+      <p class="final-calculation">
+        This may be getting
+        <br>
+        slightly out of hand.
+      </p>
+    </div>
+
+    <button
+      class="btn next hidden"
+      id="attachmentNext"
+      onclick="go(7)">
+
+      CONTINUE ANYWAY
+    </button>
+  </div>
+</section>
+
+
+
+
+<section class="screen" id="s7">
+  <div class="days-color-bg">
+  <span class="blob blob1"></span>
+  <span class="blob blob2"></span>
+  <span class="blob blob3"></span>
+  <span class="blob blob4"></span>
+</div>
+  <div class="panel">
+    <div class="big-number">240</div>
+    <p>days since the first time I saw you.</p>
+    <p class="counterline">5,760 hours.</p>
+    <p class="counterline">345,600 minutes.</p>
+    <div class="spacer"></div>
+    <p>And somehow...</p>
+    <p>I’m still not tired of you.</p>
+    <p class="muted">Concerning.</p>
+    <p>Would I do it again?</p>
+    <div class="yesno" id="yesno">
+  <button
+    class="btn"
+    id="yesBtn"
+    onclick="yesChoice()">
+    YES
+  </button>
+  <button
+    class="btn"
+    id="noBtn">
+    NO
+  </button>
+</div>
+    <div class="feedback" id="yesFeedback"></div>
+    <button class="btn next hidden" id="yesNext" onclick="go(8)">NEXT</button>
+  </div>
+</section>
+
+
+
+<section class="screen" id="s8">
+  <div class="panel">
+    <h2>Birthday gifts.</h2>
+    <p class="muted">
+      You may open all of them.
+    </p>
+
+    <div class="gift-grid">
+      <!-- Gift 1 -->
+      <button
+        class="gift"
+        onclick="openGift(
+          this,
+          1,
+          'A virtual kiss coupon.',
+          'Redeemable immediately.'
+        )">
+
+        🎁
+        <span>Gift 1</span>
+      </button>
+
+      <!-- Gift 2 -->
+      <button
+        class="gift"
+        onclick="openGift(
+          this,
+          2,
+          'One tiny request.',
+          'Terms to be discussed later.'
+        )">
+
+        🎁
+        <span>Gift 2</span>
+      </button>
+
+
+      <!-- Gift 3 -->
+      <button
+        class="gift"
+        onclick="openGift(
+          this,
+          3,
+          'Unlimited hugs.',
+          'Redeemable when our physical distance reaches 0.'
+        )">
+
+        🎁
+        <span>Gift 3</span>
+      </button>
+
+
+      <!-- Gift 4 -->
+      <button
+        class="gift"
+        onclick="openGift(
+          this,
+          4,
+          'An actual gift.',
+          'If you think you could use it, I’ll build you a personal website.'
+        )">
+
+        🎁
+        <span>Gift 4</span>
+      </button>
+
+    </div>
+
+    <div
+      class="feedback"
+      id="giftProgress">
+
+      0 / 4 opened
+    </div>
+
+    <div
+      class="feedback hidden"
+      id="giftConclusion">
+
+      All gifts successfully delivered.
+    </div>
+
+    <button
+      class="btn next hidden"
+      id="giftNext"
+      onclick="go(9)">
+
+      ONE LAST THING
+    </button>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+<section class="screen" id="s9">
+
+  <div class="final-bg">
+    <span class="final-dot dot1"></span>
+    <span class="final-dot dot2"></span>
+    <span class="final-dot dot3"></span>
+  </div>
+
+  <div class="panel final-panel">
+
+    <p class="final-small">
+      ONE LAST THING
+    </p>
+
+    <h2>
+      Happy birthday, Fang Yirui.
+    </h2>
+
+    <div class="final-message">
+
+      <p>
+        I wish I could be there with you today.
+      </p>
+
+      <p>
+        But until I can be,
+        <br>
+        I made you this tiny world instead.
+      </p>
+
+      <p>
+        A few stupid questions,
+        <br>
+        a few unnecessary calculations,
+        <br>
+        a few things I noticed,
+        <br>
+        and a few things I probably wouldn't say this directly.
+      </p>
+
+      <p>
+        Somehow,
+        you've become someone I miss,
+        <br>
+        someone I think about,
+        <br>
+        and someone who matters to me
+        more than I expected.
+      </p>
+
+      <p>
+        I hope 29 is kind to you.
+      </p>
+
+      <p>
+        I hope you keep doing the things
+        you genuinely care about,
+        <br>
+        keep becoming more of the person
+        you want to be,
+        <br>
+        and keep finding things
+        that make life feel worth looking forward to.
+      </p>
+
+      <p class="final-birthday">
+        Happy birthday, birthday boy. 🤍
+      </p>
+
+    </div>
+
+    <button
+      class="btn final-replay"
+      onclick="go(1)">
+      REPLAY THIS TINY WORLD
+    </button>
+
+  </div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
